@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "yemenplaza-stor",
-    "slug": "snack-ae92c17d-cd77-4b04-82c9-2744ff68d82a",
+    "name": "yemenplaza-app1",
+    "slug": "snack-2d8088c8-89d0-446f-affd-8ab366033d26",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,7 +16,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.yemenplaza.store",
+      "package": "com.abraber.yemenplaza",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -25,6 +25,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "متجر يمن بلازا للإلكترونيات والأدوات المنزلية والمهنية "
   }
 }
