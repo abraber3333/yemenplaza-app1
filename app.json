@@ -1,15 +1,11 @@
 {
   "expo": {
-    "name": "yemenplaza-stor",
-    "slug": "snack-ae92c17d-cd77-4b04-82c9-2744ff68d82a",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "userInterfaceStyle": "light",
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "package": "com.yemenplaza.store"
+    "name": "Yemen Plaza",
+    "slug": "yemenplaza-app1",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     }
   }
 }
