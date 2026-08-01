@@ -25,8 +25,13 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Expo Prebuild (Generate Android Folder)
+      - name: Expo Prebuild
         run: npx expo prebuild --platform android --clean
+
+      - name: Fix Missing Splashscreen Color Resource
+        run: |
+          mkdir -p android/app/src/main/res/values
+          echo '<resources><color name="splashscreen_background">#FFFFFF</color></resources>' > android/app/src/main/res/values/colors.xml
 
       - name: Grant execute permission for gradlew
         run: chmod +x android/gradlew
