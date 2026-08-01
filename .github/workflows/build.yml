@@ -6,6 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -13,21 +14,30 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '20'
 
-      - name: Setup Expo
-        uses: expo/expo-github-action@v8
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
         with:
-          eas-version: latest
-          token: ${{ secrets.EXPO_TOKEN }}
+          distribution: 'zulu'
+          java-version: '17'
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Configure EAS Project
-        run: npx eas-cli init --force --non-interactive
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      - name: Expo Prebuild (Generate Android Folder)
+        run: npx expo prebuild --platform android --clean
 
-      - name: Build APK
-        run: npx eas-cli build --platform android --profile preview --non-interactive
+      - name: Grant execute permission for gradlew
+        run: chmod +x android/gradlew
+
+      - name: Build APK with Gradle
+        run: |
+          cd android
+          ./gradlew assembleRelease --no-daemon
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: YemenPlaza-APK
+          path: android/app/build/outputs/apk/release/*.apk
